@@ -6,7 +6,7 @@ const CustomButton = ({ children, ...props }) => {
   return (
     <button
     {...props}
-    className={ `${styles.button} ${props.isGoogleSignIn 
+    className={ `${styles.main} ${props.isGoogleSignIn 
       ? styles.google :  
       props.inverted ? styles.inverted :
       styles.basic}`
