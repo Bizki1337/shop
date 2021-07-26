@@ -7,32 +7,29 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 
-import {
-  CheckoutItemContainer,
-  ImageContainer,
-  TextContainer,
-  QuantityContainer,
-  RemoveButtonContainer
-} from './checkout-item.styles';
+import styles from './checkout-item.module.scss';
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
-    <CheckoutItemContainer>
-      <ImageContainer>
+    <div className={styles.wrapper}>
+      <div className={styles.prop}>
         <img src={imageUrl} alt='item' />
-      </ImageContainer>
-      <TextContainer>{name}</TextContainer>
-      <QuantityContainer>
+      </div>
+      <span className={styles.text}>{name}</span>
+      <span className={styles.quantity}>
         <div onClick={() => removeItem(cartItem)}>&#10094;</div>
         <span>{quantity}</span>
-        <div onClick={() => addItem(cartItem)}>&#10095;</div>
-      </QuantityContainer>
-      <TextContainer>{price}</TextContainer>
-      <RemoveButtonContainer onClick={() => clearItem(cartItem)}>
+        <div onClick={() => addItem(cartItem)}>&#10095;</div> 
+      </span>
+      <span className={styles.text}>{price}</span>
+      <div 
+        className={styles.button}
+        onClick={() => clearItem(cartItem)}
+      >
         &#10005;
-      </RemoveButtonContainer>
-    </CheckoutItemContainer>
+      </div>
+    </div>
   );
 };
 
